@@ -1,5 +1,5 @@
 // lib
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState, memo } from "react";
 
 // components
 import DisplayInput from "../DisplayInput";
@@ -13,7 +13,10 @@ import { isNumber } from "../../utils";
 // hooks
 import useOutsideClick from "../../hooks/useOutsideClick";
 
-function OTPInput({
+// constants
+const dummyArray = new Array(6).fill(0);
+
+const MemoizedOTPInput = memo(function OTPInput({
   id = "",
   label = "",
   readonly = false,
@@ -31,8 +34,6 @@ function OTPInput({
   const inputRef = useRef(null);
   const [input, setInput] = useState<string>(value);
   const [displayFocus, setDisplayFocus] = useState<boolean>(false);
-
-  const dummyArray = new Array(6).fill(0);
 
   const handleOutsideClick = () => {
     if (!inputRef.current) return;
@@ -97,6 +98,6 @@ function OTPInput({
       <div className={styles.error}>{error}</div>
     </div>
   );
-}
+});
 
-export default OTPInput;
+export default MemoizedOTPInput;

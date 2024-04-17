@@ -1,4 +1,15 @@
+// styles
 import styles from "./styles.module.css";
+
+// helper function
+function checkFocus(
+  displayFocus: boolean,
+  readonly: boolean,
+  input: string,
+  index: number
+) {
+  return displayFocus && !readonly && input.length === index;
+}
 
 function DisplayInput({
   dummyArray,
@@ -15,17 +26,7 @@ function DisplayInput({
     <div className={`${styles.displayInput} ${styles.inputContainer}`}>
       {dummyArray.map((_element: 0, index: number) => {
         const displayValue = input[index];
-        const isFocussed =
-          (displayFocus &&
-            !readonly &&
-            displayValue === undefined &&
-            input.length === index) ||
-          (displayFocus &&
-            !readonly &&
-            displayValue !== undefined &&
-            index === 5 &&
-            input.length === 6);
-
+        const isFocussed = checkFocus(displayFocus, readonly, input, index);
         return (
           <span
             className={`${styles.singleBlock} ${
