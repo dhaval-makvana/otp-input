@@ -1,0 +1,27 @@
+.container {
+  width: calc(100% - 32px);
+  min-width: 360px;
+  max-width: 540px;
+  height: auto;
+  background-color: #c3c3c3;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.heading {
+  font-size: 32px;
+  line-height: 40px;
+  margin: 8px 16px;
+}
+
+.submit {
+  outline: none;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  background-color: #7a7a7a;
+  cursor: not-allowed;
+}

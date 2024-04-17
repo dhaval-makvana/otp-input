@@ -1,0 +1,49 @@
+.displayInput {
+  background-color: #dbdbdb;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  align-items: center;
+  border-radius: inherit;
+}
+
+.inputContainer {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  padding: 8px 16px;
+}
+
+.singleBlock {
+  box-sizing: border-box;
+  width: 40px;
+  height: 28px;
+  border-bottom: 1px solid #f7f7f7;
+  line-height: 24px;
+  position: relative;
+  font-weight: 500;
+}
+
+.noBorder {
+  border: none;
+}
+
+.focus {
+  border-bottom: 1px solid green;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+  position: absolute;
+  right: 10px;
+  line-height: 24px;
+  color: green;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
