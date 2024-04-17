@@ -13,6 +13,9 @@ import { isNumber } from "../../utils";
 // hooks
 import useOutsideClick from "../../hooks/useOutsideClick";
 
+// constants
+const dummyArray = new Array(6).fill(0);
+
 function OTPInput({
   id = "",
   label = "",
@@ -31,8 +34,6 @@ function OTPInput({
   const inputRef = useRef(null);
   const [input, setInput] = useState<string>(value);
   const [displayFocus, setDisplayFocus] = useState<boolean>(false);
-
-  const dummyArray = new Array(6).fill(0);
 
   const handleOutsideClick = () => {
     if (!inputRef.current) return;
