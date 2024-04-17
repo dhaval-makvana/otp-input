@@ -1,5 +1,5 @@
 // lib
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState, memo } from "react";
 
 // components
 import DisplayInput from "../DisplayInput";
@@ -16,7 +16,7 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 // constants
 const dummyArray = new Array(6).fill(0);
 
-function OTPInput({
+const MemoizedOTPInput = memo(function OTPInput({
   id = "",
   label = "",
   readonly = false,
@@ -98,6 +98,6 @@ function OTPInput({
       <div className={styles.error}>{error}</div>
     </div>
   );
-}
+});
 
-export default OTPInput;
+export default MemoizedOTPInput;
