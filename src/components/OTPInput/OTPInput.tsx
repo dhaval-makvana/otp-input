@@ -1,5 +1,5 @@
 // lib
-import { FormEvent, FormEventHandler, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 
 // components
 import DisplayInput from "../DisplayInput";
@@ -35,13 +35,17 @@ function OTPInput({
   const dummyArray = new Array(6).fill(0);
 
   const handleOutsideClick = () => {
-    if (inputRef.current) {
-      inputRef.current?.blur();
-      setDisplayFocus(false);
-    }
+    if (!inputRef.current) return;
+    const currentNode = inputRef.current as HTMLButtonElement;
+    currentNode.blur();
+    setDisplayFocus(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent & {
+      target: HTMLInputElement;
+    }
+  ) => {
     const value = e.target.value;
     if (value.length > 6) {
       return;
@@ -59,10 +63,10 @@ function OTPInput({
   };
 
   const handleClick = () => {
-    if (inputRef.current) {
-      inputRef.current?.focus();
-      setDisplayFocus(true);
-    }
+    if (!inputRef.current) return;
+    const currentNode = inputRef.current as HTMLButtonElement;
+    currentNode.focus();
+    setDisplayFocus(true);
   };
 
   useOutsideClick(inputRef, handleOutsideClick);
